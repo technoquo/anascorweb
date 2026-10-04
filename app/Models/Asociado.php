@@ -17,7 +17,7 @@ class Asociado extends Authenticatable
     protected $fillable = [
         'nombre_completo', 'foto', 'cedula', 'fecha_nacimiento',
         'provincia_id', 'canton_id', 'ciudad', 'direccion',
-        'correo', 'telefono', 'password',
+        'correo', 'telefono', 'password', 'debe_cambiar_password',
         'fecha_afiliacion', 'fecha_inicio', 'fecha_fin',
         'plan_cuota', 'pagado_hasta', 'moroso', 'activo',
     ];
@@ -32,6 +32,7 @@ class Asociado extends Authenticatable
         'pagado_hasta' => 'date',
         'moroso' => 'boolean',
         'activo' => 'boolean',
+        'debe_cambiar_password' => 'boolean',
         'password' => 'hashed',
     ];
 

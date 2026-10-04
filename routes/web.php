@@ -8,6 +8,9 @@ use App\Livewire\Anascor\Expresidentes;
 use App\Livewire\Anascor\Historia;
 use App\Livewire\Anascor\NuestroTrabajo;
 use App\Livewire\Anascor\QuienesSomos;
+use App\Livewire\Asociados\CambiarPassword as AsociadoCambiarPassword;
+use App\Livewire\Asociados\Ingresar as AsociadoIngresar;
+use App\Livewire\Asociados\Perfil as AsociadoPerfil;
 use App\Livewire\Buscar;
 use App\Livewire\ComiteDetalle;
 use App\Livewire\Comites;
@@ -54,6 +57,13 @@ Route::get('/contacto', Contacto::class)->name('contacto');
 
 // Buscar
 Route::get('/buscar', Buscar::class)->name('buscar');
+
+// Asociados
+Route::prefix('asociados')->name('asociados.')->group(function () {
+    Route::get('/ingresar', AsociadoIngresar::class)->name('ingresar')->middleware('guest:asociado');
+    Route::get('/cambiar-password', AsociadoCambiarPassword::class)->name('cambiar-password')->middleware('asociado.auth');
+    Route::get('/perfil', AsociadoPerfil::class)->name('perfil')->middleware('asociado.auth');
+});
 
 // Redirecciones 301 desde URLs antiguas del sitio
 Route::redirect('/quienes', '/anascor/quienes-somos', 301);

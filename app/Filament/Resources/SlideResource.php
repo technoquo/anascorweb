@@ -44,6 +44,7 @@ class SlideResource extends Resource
                 ->label('Imagen')
                 ->image()
                 ->imageEditor()
+                ->disk('public')
                 ->directory('slides')
                 ->required()
                 ->columnSpanFull(),

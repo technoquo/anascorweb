@@ -15,7 +15,7 @@ class Asociado extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $fillable = [
-        'nombre_completo', 'cedula', 'fecha_nacimiento',
+        'nombre_completo', 'foto', 'cedula', 'fecha_nacimiento',
         'provincia_id', 'canton_id', 'ciudad', 'direccion',
         'correo', 'telefono', 'password',
         'fecha_afiliacion', 'fecha_inicio', 'fecha_fin',

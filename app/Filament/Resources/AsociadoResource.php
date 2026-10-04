@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Exports\AsociadoExporter;
 use App\Filament\NavigationGroup;
 use App\Filament\Resources\AsociadoResource\Pages;
 use App\Filament\Resources\AsociadoResource\RelationManagers\PagosRelationManager;
@@ -10,8 +9,8 @@ use App\Models\Asociado;
 use App\Models\Canton;
 use App\Models\Provincia;
 use Filament\Actions;
-use Filament\Actions\Exports\ExportBulkAction;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -20,6 +19,7 @@ use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
@@ -50,6 +50,15 @@ class AsociadoResource extends Resource
     public static function form(Schema $schema): Schema
     {
         return $schema->components([
+            FileUpload::make('foto')
+                ->label('Foto del asociado')
+                ->image()
+                ->imageEditor()
+                ->disk('public')
+                ->directory('asociados/fotos')
+                ->avatar()
+                ->nullable()
+                ->columnSpanFull(),
             TextInput::make('nombre_completo')
                 ->label('Nombre completo')
                 ->required()
@@ -130,6 +139,11 @@ class AsociadoResource extends Resource
     {
         return $table
             ->columns([
+                ImageColumn::make('foto')
+                    ->label('Foto')
+                    ->disk('public')
+                    ->circular()
+                    ->defaultImageUrl(asset('img/avatar-default.svg')),
                 TextColumn::make('nombre_completo')
                     ->label('Nombre')
                     ->searchable()
@@ -188,7 +202,6 @@ class AsociadoResource extends Resource
             ])
             ->bulkActions([
                 Actions\BulkActionGroup::make([
-                    ExportBulkAction::make()->exporter(AsociadoExporter::class),
                     Actions\DeleteBulkAction::make(),
                 ]),
             ]);

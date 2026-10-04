@@ -6,6 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{ $title ?? 'ANASCOR — Asociación Nacional de Sordos de Costa Rica' }}</title>
     <meta name="description" content="{{ $descripcion ?? 'Asociación Nacional de Sordos de Costa Rica. Defendiendo los derechos de las personas sordas desde 1974.' }}">
+
+    {{-- Canonical --}}
+    <link rel="canonical" href="{{ $canonical ?? url()->current() }}">
+
+    {{-- Noindex para área privada --}}
+    @if(request()->is('asociados/*') || request()->is('admin/*'))
+    <meta name="robots" content="noindex,nofollow">
+    @else
+    <meta name="robots" content="index,follow">
+    @endif
+
+    {{-- Open Graph --}}
+    <meta property="og:type" content="{{ $ogType ?? 'website' }}">
+    <meta property="og:site_name" content="ANASCOR">
+    <meta property="og:locale" content="es_CR">
+    <meta property="og:title" content="{{ $title ?? 'ANASCOR — Asociación Nacional de Sordos de Costa Rica' }}">
+    <meta property="og:description" content="{{ $descripcion ?? 'Asociación Nacional de Sordos de Costa Rica. Defendiendo los derechos de las personas sordas desde 1974.' }}">
+    <meta property="og:url" content="{{ $canonical ?? url()->current() }}">
+    @if(isset($ogImagen))
+    <meta property="og:image" content="{{ $ogImagen }}">
+    @else
+    <meta property="og:image" content="{{ asset('logo/anascor.png') }}">
+    @endif
+
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     {{-- Aplicar tema y fuente antes del primer paint para evitar FOUC --}}
     <script>

@@ -1,2 +1,8 @@
 User-agent: *
-Disallow:
+Disallow: /admin
+Disallow: /admin/
+Disallow: /asociados/perfil
+Disallow: /asociados/cambiar-password
+Disallow: /livewire/
+
+Sitemap: https://anascor.org/sitemap.xml

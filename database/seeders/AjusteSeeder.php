@@ -11,7 +11,7 @@ class AjusteSeeder extends Seeder
     {
         $ajustes = [
             'direccion' => 'Provincia San José, Cantón Central, Barrio Escalante; 300 metros norte de la Iglesia Santa Teresita, 25 este a mano derecha, casa n.º 2350.',
-            'correo' => 'info@anascor.org',
+            'correo' => 'anascor74@gmail.com',
             'telefono' => '',
             'facebook' => 'https://www.facebook.com/ANASCORCR',
             'instagram' => 'https://www.instagram.com/anascorcr',

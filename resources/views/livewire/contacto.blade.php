@@ -65,119 +65,23 @@
                         @endif
                     </div>
 
-                    {{-- Mapa --}}
-                    @if($mapaUrl)
-                    <div class="mt-8 rounded-xl overflow-hidden" style="aspect-ratio:16/10;">
-                        <iframe
-                            src="{{ $mapaUrl }}"
-                            width="100%"
-                            height="100%"
-                            style="border:0;"
-                            allowfullscreen
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"
-                            title="Ubicación de ANASCOR en Google Maps"
-                        ></iframe>
-                    </div>
-                    @endif
                 </div>
 
-                {{-- Formulario --}}
-                <div>
-                    <h2 class="seccion-titulo mb-6">Envíenos un mensaje</h2>
-
-                    @if($enviado)
-                    <div class="rounded-lg p-5 mb-6" style="background-color:#d1fae5;color:#065f46;border:1px solid #6ee7b7;" role="alert">
-                        <p class="font-semibold">¡Mensaje enviado!</p>
-                        <p class="text-sm mt-1">Gracias por contactarnos. Le responderemos a la brevedad posible.</p>
-                    </div>
-                    @else
-
-                    @if($errorEnvio)
-                    <div class="rounded-lg p-4 mb-5 text-sm" style="background-color:#fee2e2;color:#991b1b;border:1px solid #fca5a5;" role="alert">
-                        {{ $errorEnvio }}
-                    </div>
-                    @endif
-
-                    <form wire:submit="enviar" novalidate>
-
-                        {{-- Honeypot --}}
-                        <div style="position:absolute;left:-9999px;opacity:0;pointer-events:none;" aria-hidden="true">
-                            <input type="text" wire:model="trampa" tabindex="-1" autocomplete="off" name="website">
-                        </div>
-
-                        <div class="space-y-5">
-                            <div>
-                                <label for="nombre" class="form-label">Nombre <span aria-hidden="true" style="color:var(--anascor-rojo);">*</span></label>
-                                <input
-                                    type="text"
-                                    id="nombre"
-                                    wire:model="nombre"
-                                    class="form-input @error('nombre') form-input--error @enderror"
-                                    autocomplete="name"
-                                    required
-                                >
-                                @error('nombre')
-                                <p class="form-error" role="alert">{{ $message }}</p>
-                                @enderror
-                            </div>
-
-                            <div>
-                                <label for="correo" class="form-label">Correo electrónico <span aria-hidden="true" style="color:var(--anascor-rojo);">*</span></label>
-                                <input
-                                    type="email"
-                                    id="correo"
-                                    wire:model="correo"
-                                    class="form-input @error('correo') form-input--error @enderror"
-                                    autocomplete="email"
-                                    required
-                                >
-                                @error('correo')
-                                <p class="form-error" role="alert">{{ $message }}</p>
-                                @enderror
-                            </div>
-
-                            <div>
-                                <label for="asunto" class="form-label">Asunto <span aria-hidden="true" style="color:var(--anascor-rojo);">*</span></label>
-                                <input
-                                    type="text"
-                                    id="asunto"
-                                    wire:model="asunto"
-                                    class="form-input @error('asunto') form-input--error @enderror"
-                                    required
-                                >
-                                @error('asunto')
-                                <p class="form-error" role="alert">{{ $message }}</p>
-                                @enderror
-                            </div>
-
-                            <div>
-                                <label for="mensaje" class="form-label">Mensaje <span aria-hidden="true" style="color:var(--anascor-rojo);">*</span></label>
-                                <textarea
-                                    id="mensaje"
-                                    wire:model="mensaje"
-                                    rows="5"
-                                    class="form-input form-textarea @error('mensaje') form-input--error @enderror"
-                                    required
-                                ></textarea>
-                                @error('mensaje')
-                                <p class="form-error" role="alert">{{ $message }}</p>
-                                @enderror
-                            </div>
-
-                            <button
-                                type="submit"
-                                class="btn-enviar"
-                                wire:loading.attr="disabled"
-                                wire:loading.class="opacity-70 cursor-not-allowed"
-                            >
-                                <span wire:loading.remove>Enviar mensaje</span>
-                                <span wire:loading>Enviando…</span>
-                            </button>
-                        </div>
-                    </form>
-                    @endif
+                {{-- Mapa --}}
+                @if($mapaUrl)
+                <div class="rounded-xl overflow-hidden" style="aspect-ratio:16/10;">
+                    <iframe
+                        src="{{ $mapaUrl }}"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        allowfullscreen
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Ubicación de ANASCOR en Google Maps"
+                    ></iframe>
                 </div>
+                @endif
 
             </div>
         </div>

@@ -10,7 +10,12 @@
 
             {{-- Columna 1: Logo + misión + redes --}}
             <div class="space-y-4">
-                <a href="{{ route('home') }}" aria-label="Inicio — ANASCOR">
+                <a
+                    href="{{ route('home') }}"
+                    class="inline-flex size-28 items-center justify-center rounded-full bg-white shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                    style="--tw-ring-color: var(--t-enlace);"
+                    aria-label="Inicio — ANASCOR"
+                >
                     <img src="{{ asset('logo/anascor.png') }}" alt="ANASCOR" class="h-24 w-auto">
                 </a>
                 <p class="text-sm leading-relaxed" style="color: var(--t-texto-suave);">

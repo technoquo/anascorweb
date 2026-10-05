@@ -4,19 +4,19 @@
     role="banner"
 >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-20 gap-4">
+        <div class="flex items-center justify-between h-32 gap-4">
 
             {{-- Logo --}}
             <a
                 href="{{ route('home') }}"
-                class="shrink-0 rounded focus-visible:outline-none focus-visible:ring-2"
+                class="shrink-0 size-24 lg:size-28 rounded-full bg-white shadow-sm flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
                 style="--tw-ring-color: var(--t-enlace);"
                 aria-label="Inicio — ANASCOR"
             >
                 <img
                     src="{{ asset('logo/anascor.png') }}"
                     alt="ANASCOR — Asociación Nacional de Sordos de Costa Rica"
-                    class="h-14 w-auto"
+                    class="h-20 lg:h-24 w-auto"
                     loading="eager"
                     decoding="async"
                 >

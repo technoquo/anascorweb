@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\NavigationGroup;
 use App\Filament\Resources\NoticiaResource\Pages;
+use App\Filament\Resources\NoticiaResource\RelationManagers\ImagenesRelationManager;
 use App\Models\Noticia;
 use Filament\Actions;
 use Filament\Forms\Components\DateTimePicker;
@@ -127,6 +128,13 @@ class NoticiaResource extends Resource
                     Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            ImagenesRelationManager::class,
+        ];
     }
 
     public static function getPages(): array

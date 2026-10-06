@@ -86,6 +86,59 @@
             {!! nl2br(e($evento->descripcion)) !!}
         </div>
 
+        {{-- Botón de inscripción --}}
+        @if($evento->form_url)
+        <div class="mt-8">
+            <a
+                href="{{ $evento->form_url }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-primario inline-flex items-center gap-2"
+            >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+                Inscribirse en este evento
+            </a>
+        </div>
+        @endif
+
+        {{-- Video de YouTube --}}
+        @if($youtubeId)
+        <div class="mt-10">
+            <div class="youtube-wrapper">
+                <iframe
+                    src="https://www.youtube-nocookie.com/embed/{{ $youtubeId }}"
+                    title="{{ $evento->nombre }}"
+                    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    loading="lazy"
+                    class="absolute inset-0 w-full h-full rounded-lg"
+                ></iframe>
+            </div>
+        </div>
+        @endif
+
+        {{-- Galería --}}
+        @if($evento->imagenes->isNotEmpty())
+        <div class="mt-10">
+            <h2 class="text-xl font-semibold mb-4" style="color: var(--t-texto);">Galería</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                @foreach($evento->imagenes as $imagen)
+                <div class="overflow-hidden rounded-lg aspect-square" style="background-color: var(--t-fondo-alt);">
+                    <img
+                        src="{{ asset('storage/' . $imagen->imagen) }}"
+                        alt="{{ $imagen->alt }}"
+                        class="w-full h-full object-cover"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </div>
+                @endforeach
+            </div>
+        </div>
+        @endif
+
         <div class="mt-12 pt-8 border-t" style="border-color: var(--t-borde);">
             <a href="{{ route('eventos') }}" class="btn-volver">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">

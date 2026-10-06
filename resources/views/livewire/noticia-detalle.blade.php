@@ -55,6 +55,26 @@
         </div>
         @endif
 
+        {{-- Galería --}}
+        @if($noticia->imagenes->isNotEmpty())
+        <div class="mt-10">
+            <h2 class="text-xl font-semibold mb-4" style="color: var(--t-texto);">Galería</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                @foreach($noticia->imagenes as $imagen)
+                <div class="overflow-hidden rounded-lg aspect-square" style="background-color: var(--t-fondo-alt);">
+                    <img
+                        src="{{ asset('storage/' . $imagen->imagen) }}"
+                        alt="{{ $imagen->alt }}"
+                        class="w-full h-full object-cover"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </div>
+                @endforeach
+            </div>
+        </div>
+        @endif
+
         {{-- Volver --}}
         <div class="mt-12 pt-8 border-t" style="border-color: var(--t-borde);">
             <a href="{{ route('noticias') }}" class="btn-volver">

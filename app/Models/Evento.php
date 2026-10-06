@@ -6,6 +6,7 @@ use Database\Factories\EventoFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Evento extends Model
 {
@@ -14,6 +15,7 @@ class Evento extends Model
 
     protected $fillable = [
         'nombre', 'slug', 'descripcion', 'imagen',
+        'video_url', 'form_url',
         'lugar', 'inicia_en', 'termina_en', 'comite_id', 'activo',
     ];
 
@@ -26,5 +28,10 @@ class Evento extends Model
     public function comite(): BelongsTo
     {
         return $this->belongsTo(Comite::class);
+    }
+
+    public function imagenes(): HasMany
+    {
+        return $this->hasMany(EventoImagen::class)->orderBy('orden');
     }
 }

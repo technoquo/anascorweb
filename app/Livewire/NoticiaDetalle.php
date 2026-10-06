@@ -13,7 +13,7 @@ class NoticiaDetalle extends Component
 
     public function mount(string $slug): void
     {
-        $this->noticia = Noticia::where('slug', $slug)->where('activo', true)->firstOrFail();
+        $this->noticia = Noticia::with('imagenes')->where('slug', $slug)->where('activo', true)->firstOrFail();
 
         if ($this->noticia->video_url) {
             preg_match(

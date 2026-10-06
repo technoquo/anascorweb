@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\NavigationGroup;
 use App\Filament\Resources\EventoResource\Pages;
+use App\Filament\Resources\EventoResource\RelationManagers\ImagenesRelationManager;
 use App\Models\Comite;
 use App\Models\Evento;
 use Filament\Actions;
@@ -86,6 +87,16 @@ class EventoResource extends Resource
                 ->directory('eventos')
                 ->nullable()
                 ->columnSpanFull(),
+            TextInput::make('video_url')
+                ->label('URL de YouTube (opcional)')
+                ->url()
+                ->nullable()
+                ->maxLength(500),
+            TextInput::make('form_url')
+                ->label('URL de formulario de inscripción (opcional)')
+                ->url()
+                ->nullable()
+                ->maxLength(500),
             Toggle::make('activo')
                 ->label('Activo')
                 ->default(true),
@@ -132,6 +143,13 @@ class EventoResource extends Resource
                     Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            ImagenesRelationManager::class,
+        ];
     }
 
     public static function getPages(): array

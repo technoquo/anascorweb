@@ -33,6 +33,7 @@ class MiembrosRelationManager extends RelationManager
                 ->label('Fotografía (opcional)')
                 ->image()
                 ->imageEditor()
+                ->disk('public')
                 ->directory('comites/miembros')
                 ->nullable(),
             TextInput::make('orden')

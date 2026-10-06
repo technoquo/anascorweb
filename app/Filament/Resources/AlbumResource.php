@@ -67,6 +67,7 @@ class AlbumResource extends Resource
                 ->label('Imagen de portada')
                 ->image()
                 ->imageEditor()
+                ->disk('public')
                 ->directory('galeria/portadas')
                 ->required()
                 ->columnSpanFull(),

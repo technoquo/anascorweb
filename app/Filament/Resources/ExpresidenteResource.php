@@ -46,6 +46,7 @@ class ExpresidenteResource extends Resource
                 ->label('Fotografía')
                 ->image()
                 ->imageEditor()
+                ->disk('public')
                 ->directory('expresidentes')
                 ->nullable(),
             TextInput::make('anio_inicio')

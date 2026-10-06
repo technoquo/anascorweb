@@ -65,6 +65,7 @@ class ComiteResource extends Resource
                 ->label('Logo')
                 ->image()
                 ->imageEditor()
+                ->disk('public')
                 ->directory('comites')
                 ->required()
                 ->columnSpanFull(),

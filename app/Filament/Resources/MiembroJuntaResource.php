@@ -52,6 +52,7 @@ class MiembroJuntaResource extends Resource
                 ->label('Fotografía')
                 ->image()
                 ->imageEditor()
+                ->disk('public')
                 ->directory('junta')
                 ->required(),
             TextInput::make('periodo')

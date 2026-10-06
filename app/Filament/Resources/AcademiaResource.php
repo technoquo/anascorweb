@@ -53,6 +53,7 @@ class AcademiaResource extends Resource
                 ->label('Logo o imagen')
                 ->image()
                 ->imageEditor()
+                ->disk('public')
                 ->directory('academias')
                 ->required(),
             TextInput::make('orden')

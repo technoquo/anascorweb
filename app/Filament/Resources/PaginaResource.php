@@ -56,6 +56,7 @@ class PaginaResource extends Resource
                 ->label('Imagen (opcional)')
                 ->image()
                 ->imageEditor()
+                ->disk('public')
                 ->directory('paginas')
                 ->nullable(),
             TextInput::make('alt')

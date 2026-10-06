@@ -59,6 +59,7 @@ class ConvenioResource extends Resource
                 ->label('Logo o imagen')
                 ->image()
                 ->imageEditor()
+                ->disk('public')
                 ->directory('convenios')
                 ->required(),
             TextInput::make('orden')

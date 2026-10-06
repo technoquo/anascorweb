@@ -77,6 +77,7 @@ class NoticiaResource extends Resource
                 ->label('Imagen principal')
                 ->image()
                 ->imageEditor()
+                ->disk('public')
                 ->directory('noticias')
                 ->required(),
             TextInput::make('alt')

@@ -24,6 +24,7 @@ class ImagenesRelationManager extends RelationManager
                 ->label('Imagen')
                 ->image()
                 ->imageEditor()
+                ->disk('public')
                 ->directory('eventos/galeria')
                 ->required()
                 ->columnSpanFull(),

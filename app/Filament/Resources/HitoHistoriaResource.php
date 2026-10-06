@@ -58,6 +58,7 @@ class HitoHistoriaResource extends Resource
                 ->label('Imagen (opcional)')
                 ->image()
                 ->imageEditor()
+                ->disk('public')
                 ->directory('historia')
                 ->nullable(),
             TextInput::make('alt')

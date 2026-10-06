@@ -85,6 +85,7 @@ class HitoHistoriaResource extends Resource
                     ->limit(50),
                 ImageColumn::make('imagen')
                     ->label('Imagen')
+                    ->disk('public')
                     ->square(),
                 TextColumn::make('orden')
                     ->label('Orden')

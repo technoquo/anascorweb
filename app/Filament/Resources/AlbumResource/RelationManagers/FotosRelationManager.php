@@ -47,6 +47,7 @@ class FotosRelationManager extends RelationManager
             ->columns([
                 ImageColumn::make('imagen')
                     ->label('Imagen')
+                    ->disk('public')
                     ->square(),
                 TextColumn::make('alt')
                     ->label('Alt')

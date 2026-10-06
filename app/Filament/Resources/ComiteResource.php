@@ -85,6 +85,7 @@ class ComiteResource extends Resource
             ->columns([
                 ImageColumn::make('logo')
                     ->label('Logo')
+                    ->disk('public')
                     ->square(),
                 TextColumn::make('nombre')
                     ->label('Nombre')

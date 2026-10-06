@@ -101,6 +101,7 @@ class NoticiaResource extends Resource
             ->columns([
                 ImageColumn::make('imagen')
                     ->label('Imagen')
+                    ->disk('public')
                     ->square(),
                 TextColumn::make('titulo')
                     ->label('Título')

@@ -78,6 +78,7 @@ class ConvenioResource extends Resource
             ->columns([
                 ImageColumn::make('imagen')
                     ->label('Logo')
+                    ->disk('public')
                     ->square(),
                 TextColumn::make('nombre')
                     ->label('Nombre')

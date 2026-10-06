@@ -76,6 +76,7 @@ class MiembroJuntaResource extends Resource
             ->columns([
                 ImageColumn::make('foto')
                     ->label('Foto')
+                    ->disk('public')
                     ->circular(),
                 TextColumn::make('nombre')
                     ->label('Nombre')

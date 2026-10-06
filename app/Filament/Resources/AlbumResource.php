@@ -88,6 +88,7 @@ class AlbumResource extends Resource
             ->columns([
                 ImageColumn::make('portada')
                     ->label('Portada')
+                    ->disk('public')
                     ->square(),
                 TextColumn::make('titulo')
                     ->label('Título')

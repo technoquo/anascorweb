@@ -110,6 +110,7 @@ class EventoResource extends Resource
             ->columns([
                 ImageColumn::make('imagen')
                     ->label('Imagen')
+                    ->disk('public')
                     ->square(),
                 TextColumn::make('nombre')
                     ->label('Nombre')

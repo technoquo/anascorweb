@@ -16,7 +16,7 @@
                     style="--tw-ring-color: var(--t-enlace);"
                     aria-label="Inicio — ANASCOR"
                 >
-                    <img src="{{ asset('logo/anascor.png') }}" alt="ANASCOR" class="h-24 w-auto">
+                    <img src="{{ \App\Models\Ajuste::logoUrl('logo_footer') }}" alt="ANASCOR" class="h-24 w-auto">
                 </a>
                 <p class="text-sm leading-relaxed" style="color: var(--t-texto-suave);">
                     Asociación Nacional de Sordos de Costa Rica.<br>

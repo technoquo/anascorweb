@@ -6,6 +6,7 @@ use App\Filament\NavigationGroup;
 use App\Filament\Resources\AjusteResource\Pages;
 use App\Models\Ajuste;
 use Filament\Actions;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
@@ -34,6 +35,8 @@ class AjusteResource extends Resource
         return auth()->user()?->hasRole('Administrador') ?? false;
     }
 
+    protected static array $clavesLogo = ['logo_header', 'logo_footer'];
+
     public static function form(Schema $schema): Schema
     {
         return $schema->components([
@@ -42,10 +45,21 @@ class AjusteResource extends Resource
                 ->disabled()
                 ->dehydrated(false)
                 ->columnSpanFull(),
+            FileUpload::make('valor')
+                ->label('Logo')
+                ->image()
+                ->disk('public')
+                ->directory('ajustes/logos')
+                ->imagePreviewHeight('80')
+                ->columnSpanFull()
+                ->visible(fn (?Ajuste $record): bool => in_array($record?->clave, self::$clavesLogo))
+                ->dehydrated(fn (?Ajuste $record): bool => in_array($record?->clave, self::$clavesLogo)),
             Textarea::make('valor')
                 ->label('Valor')
                 ->rows(3)
-                ->columnSpanFull(),
+                ->columnSpanFull()
+                ->visible(fn (?Ajuste $record): bool => ! in_array($record?->clave, self::$clavesLogo))
+                ->dehydrated(fn (?Ajuste $record): bool => ! in_array($record?->clave, self::$clavesLogo)),
         ]);
     }
 
@@ -58,7 +72,11 @@ class AjusteResource extends Resource
                     ->searchable(),
                 TextColumn::make('valor')
                     ->label('Valor')
-                    ->limit(60),
+                    ->limit(60)
+                    ->formatStateUsing(fn (string $state, Ajuste $record): string => in_array($record->clave, self::$clavesLogo)
+                        ? ($state ? '(imagen subida)' : '(sin imagen)')
+                        : $state
+                    ),
             ])
             ->actions([
                 Actions\EditAction::make(),

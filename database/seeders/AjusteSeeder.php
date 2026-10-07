@@ -24,6 +24,8 @@ class AjusteSeeder extends Seeder
             'monto_anual' => '60000',
             'personas_sordas' => '',
             'fuente_personas_sordas' => '',
+            'logo_header' => '',
+            'logo_footer' => '',
         ];
 
         foreach ($ajustes as $clave => $valor) {

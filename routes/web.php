@@ -75,8 +75,6 @@ Route::redirect('/academias', '/anascor/academias', 301);
 Route::redirect('/convenios', '/anascor/convenios', 301);
 Route::redirect('/galleria', '/galeria', 301);
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('dashboard', 'dashboard')->name('dashboard');
-});
+Route::redirect('/dashboard', '/admin', 302)->name('dashboard');
 
 require __DIR__.'/settings.php';

@@ -31,11 +31,11 @@
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
                 @foreach($miembros as $miembro)
                 <div class="text-center">
-                    <div class="mx-auto mb-3 rounded-full overflow-hidden" style="width:8rem;height:8rem;background-color:var(--t-borde);">
+                    <div class="mx-auto mb-3 rounded-full overflow-hidden" style="width:10rem;height:10rem;background-color:var(--t-borde);">
                         <img
                             src="{{ asset('storage/' . $miembro->foto) }}"
                             alt="{{ $miembro->nombre }}"
-                            class="w-full h-full object-cover"
+                            class="w-full h-full object-cover object-top"
                             loading="lazy"
                             decoding="async"
                         >
